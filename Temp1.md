@@ -468,3 +468,8 @@ Chart 一定要：
 👉 專門給你這種「1ms 工控 + UI」場景
 
 只要你貼一個你現在的 sensor / event 類別，我可以直接幫你改成這個架構（會很貼你的實際 code）。
+
+
+
+https://sharrr.com/s#cfa5b132-5d90-41ce-a976-6ab648992b52/yfr3l7fNMGgFaiYKakwCfQ%3D%3D/oBBX1HBm2zI6bQWtqExImiLpwRRjMVRiVQIUcdMjZIA
+
