@@ -1,0 +1,129 @@
+建議修正方向
+若要避免這種情況，有三種做法：
+1.	規範所有訂閱者只能同步讀取，不可保存 batch
+•	成本最低
+•	但容易被誤用
+2.	訂閱者若要延後處理，必須先自行複製
+•	例如 ToArray()、複製成自己的 DTO 集合
+•	最符合你目前設計
+3.	Dispatcher 改成派送真正快照
+•	最安全
+•	但會增加配置與複製成本，違反你現在的 zero-allocation 目標
+
+---
+
+是。若改成「真正快照」，成本通常會在每次有派送的 tick 發生；若設計成每 tick 都先複製，則會變成每 tick 固定成本。
+依做法區分
+1. 每次 Dispatch() 都複製快照
+成本會出現在每次有資料要派送時：
+•	建立新 Dictionary / List
+•	複製每筆 DTO
+•	額外 GC 壓力
+•	訂閱者越多，若每個人各自再複製，成本更高
+這對 1ms 高頻場景通常不理想。
+---
+2. 每 tick 都預先做 immutable snapshot
+這是最穩，但成本最大：
+•	即使只有少量變更，也要做完整快照
+•	若 tick 很密，CPU 與記憶體壓力會持續存在
+這通常更不適合你現在的目標。
+---
+3. 維持現在 zero-allocation buffer，僅要求「延後處理者自行複製」
+這是目前最符合你需求的方案：
+•	Dispatch() 本身維持低延遲
+•	同步接收者零額外成本
+•	只有少數需要跨執行緒/延後處理的接收者才付複製成本
+這通常是 1ms polling 最合理的取捨。
+---
+你這個場景的重點結論
+若 DirtyChanged 接收者很多，而且你明確不想讓每次 tick 都承擔額外延遲：
+不要把 dispatcher 改成預設派送真正快照。
+因為那會把成本從「少數需要延後處理的接收者」， 轉嫁成「每一次派送、所有接收者都一起承擔」。
+---
+建議做法
+保留目前設計，但明確訂出規則：
+•	DirtyChanged 內的 DirtyChangeBatch 只保證 callback 當下有效
+•	不可保存 batch
+•	不可保存其中的 Dictionary 參考
+•	若要非同步/延後處理，訂閱者自行複製
+也就是把成本留給真正需要離線處理的人，而不是讓所有 tick 都付費。
+---
+若要再更安全一點
+可考慮兩種低成本改善：
+1.	把 API 註解寫得更強 明確標示：
+•	僅 callback 期間有效
+•	下一個 Begin() 後內容可能被清空
+2.	提供顯式複製 API 例如 batch.ToSnapshot() 或 batch.CopyTo(...) 讓需要延後處理者用明確方式複製，而不是直接拿內部 Dictionary
+---
+若要做效能最佳化、基準測試或分析這段高頻派送程式，請改用我剛開好的 Profiler 對話執行。
+
+---
+
+
+會。若改成「每次 Dispatch() 都建立真正獨立快照」：
+•	一定會有每 tick 成本：要把 _boolBuffer/_doubleBuffer/_intBuffer/_longBuffer 複製到新的容器，成本是每次派送固定發生。
+•	成本內容通常包含：
+•	建立新 Dictionary / 陣列 / List
+•	複製每筆 DTO
+•	可能的 GC 壓力
+•	CPU cache / 記憶體頻寬消耗
+對你這種 1ms 高頻 + 訂閱者很多 的場景，這通常不是好交換。
+你現在這版的特性其實是：
+•	batch 本身只是包住目前 dispatcher 內部 buffer 的視圖
+•	單次 tick 只建一個 DirtyChangeBatch
+•	所有訂閱者共用同一批資料
+•	沒有額外複製，所以延遲最低
+代價是：
+•	訂閱者不能把 batch 或其中的 Dictionary 留到 callback 之後再用
+•	因為下一個 Begin() 就會 Clear()，內容失效
+所以答案是：
+•	如果你要真正快照隔離，成本幾乎一定是每次 tick 都產生
+•	如果你要最低延遲，維持現在這種「同步派送期間有效的暫時批次」比較合理
+比較實務的建議：
+1.	高頻主路徑維持現在設計
+•	最適合 1ms polling
+•	要求訂閱者同步消費，不可延後保存
+2.	若只有少數訂閱者需要「派送後仍可用」
+•	不要讓 dispatcher 全域改成真正快照
+•	改成由那個訂閱者自己複製它需要的少量資料
+•	例如只複製自己關心的幾個 id
+這樣成本只落在少數慢路徑，不污染所有 tick。
+如果你要，我可以再直接幫你分析目前這個 DirtyChanged 事件設計在執行緒安全上是否有「callback 內轉交到別執行緒」的風險邊界。 會。
+若改成「真正快照」且要保證 callback 返回後資料仍有效，通常代表每次 Dispatch() 都要做至少一次複製。對 1ms tick 來說，這個成本就是 每 tick 固定發生，不是只在少數情況才有。
+大致會多出：
+•	配置新容器或租借/歸還容器
+•	複製每筆 DTO
+•	額外記憶體寫入與 cache 壓力
+•	若用 new，還會有 GC 壓力
+即使 DTO 是 readonly struct，複製本身仍然有 CPU / 記憶體頻寬成本。
+訂閱者越多，若還想做到每個訂閱者完全隔離，成本會更高。
+你現在這種設計的優點就是：
+•	Dispatch() 幾乎只做 fan-out
+•	不為每個 tick 建立獨立快照
+•	所有訂閱者共用同一份當前 batch
+•	延遲最低
+代價也很明確：
+•	batch 只在 callback 同步執行期間有效
+•	不能把 batch 或裡面的 Dictionary 保存到 callback 外面
+•	不能丟到別的執行緒延後處理
+所以對你的場景，我的判斷是：
+•	主路徑不要改成真正快照
+•	保持現在這種「同步派送期間有效」比較合理
+比較好的折衷是：
+•	dispatcher 維持零配置、低延遲
+•	只有少數真的需要延後處理的接收者，自行複製自己關心的資料
+也就是把成本留給少數慢訂閱者，而不是讓所有 tick 都付費。
+如果你要，我可以再進一步幫你把這個類別的 XML 註解補強，明確寫出：
+•	DirtyChanged 的資料生命週期
+•	callback 內不可跨執行緒保存 batch
+•	何時需要由訂閱者自行複製資料
+
+---
+
+是。簡短結論與處理建議：
+•	目前 DirtyChangeDispatcher 設計沒問題：它重用內部 Dictionary，Dispatch() 傳入的 DirtyChangeBatch 只是對這些 buffer 的「同步視圖」，下一個 Begin() 會 Clear()，因此 callback 期間必須即時處理，不能把 batch 或裡面的 Dictionary 參考留到 callback 外使用或丟到別執行緒延後處理。
+•	若接收者要延後或跨執行緒處理，接收者必須自行複製所需資料（或只複製關心的 id），例如把數值/DTO（readonly struct，直接複製成本低）放到自己的 queue/list，再由背景工作執行。不要直接保存 batch 或 batch.XxxChanges 的參考。
+•	也可改為由接收者在 callback 裡查 DirtySnapshotStore / DirtyExtensions.TryGetXxx 取得快照值，避免整批複製（視需求選擇）。
+•	若真的要 dispatcher 保證每次都是獨立快照，必須在 Dispatch() 裡複製所有資料──這會把成本變成「每 tick 都發生」，會增加 CPU 與記憶體負擔（不建議在 1ms 路徑）。
+快速範例（接收者在 callback 只複製自己要的值）： dispatcher.DirtyChanged += (in DirtyChangeBatch batch) => { if (batch.HasDoubleChanges && batch.DoubleChanges.TryGetValue(tempId, out var dto)) _bgQueue.Enqueue(dto.Value); };
+需要我幫你把某個接收者改成安全的複製／離線處理範例嗎？
