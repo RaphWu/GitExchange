@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "dgSpecHash": "l0eU7E7Z4ag=",
+  "success": false,
+  "projectFilePath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "本機來源 'D:\\Projects\\nuget' 不存在。",
+      "projectPath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+      "filePath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+      "libraryId": "CsvHelper",
+      "targetGraphs": []
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "本機來源 'D:\\Projects\\nuget' 不存在。",
+      "projectPath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+      "filePath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+      "libraryId": "Microsoft.Bcl.HashCode",
+      "targetGraphs": []
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "本機來源 'D:\\Projects\\nuget' 不存在。",
+      "projectPath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+      "filePath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+      "libraryId": "System.Threading.Tasks.Extensions",
+      "targetGraphs": []
+    }
+  ]
+}
