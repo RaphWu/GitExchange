@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
-    "net7.0-windows7.0": {
+    "net7.0-windows": {
       "CsvHelper/27.2.1": {
         "type": "package",
         "compile": {
@@ -292,7 +292,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0-windows7.0": [
+    "net7.0-windows": [
       "CsvHelper >= 27.2.1",
       "Microsoft.Bcl.AsyncInterfaces >= 8.0.0",
       "Microsoft.Bcl.HashCode >= 1.1.1",
@@ -334,7 +334,8 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0-windows7.0": {
+        "net7.0-windows": {
+          "framework": "net7.0-windows7.0",
           "targetAlias": "net7.0-windows",
           "projectReferences": {}
         }
@@ -349,10 +350,11 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
-      "net7.0-windows7.0": {
+      "net7.0-windows": {
+        "framework": "net7.0-windows7.0",
         "targetAlias": "net7.0-windows",
         "dependencies": {
           "CsvHelper": {
@@ -425,7 +427,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
