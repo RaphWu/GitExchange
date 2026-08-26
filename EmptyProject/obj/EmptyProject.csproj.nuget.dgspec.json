@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GitExchange\\EmptyProject\\EmptyProject.csproj": {}
+    "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj": {}
   },
   "projects": {
-    "F:\\GitExchange\\EmptyProject\\EmptyProject.csproj": {
+    "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+        "projectUniqueName": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
         "projectName": "EmptyProject",
-        "projectPath": "F:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
-        "packagesPath": "C:\\Users\\rapha\\.nuget\\packages\\",
-        "outputPath": "F:\\GitExchange\\EmptyProject\\obj\\",
+        "projectPath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+        "packagesPath": "C:\\Users\\08525\\.nuget\\packages\\",
+        "outputPath": "D:\\GitExchange\\EmptyProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rapha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\08525\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -28,11 +28,11 @@
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "D:\\OfflineNuGet": {},
+          "D:\\Projects\\nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0-windows": {
-            "framework": "net7.0-windows7.0",
+          "net7.0-windows7.0": {
             "targetAlias": "net7.0-windows",
             "projectReferences": {}
           }
@@ -47,11 +47,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net7.0-windows": {
-          "framework": "net7.0-windows7.0",
+        "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
             "CsvHelper": {
@@ -124,7 +123,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     }
