@@ -8,7 +8,16 @@
     {
       "code": "NU1301",
       "level": "Error",
-      "message": "The local source 'D:\\Projects\\nuget' doesn't exist.",
+      "message": "本機來源 'D:\\Projects\\nuget' 不存在。",
+      "projectPath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+      "filePath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
+      "libraryId": "Microsoft.Bcl.HashCode",
+      "targetGraphs": []
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "本機來源 'D:\\Projects\\nuget' 不存在。",
       "projectPath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
       "filePath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
       "libraryId": "CsvHelper",
@@ -17,7 +26,7 @@
     {
       "code": "NU1301",
       "level": "Error",
-      "message": "The local source 'D:\\Projects\\nuget' doesn't exist.",
+      "message": "本機來源 'D:\\Projects\\nuget' 不存在。",
       "projectPath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
       "filePath": "D:\\GitExchange\\EmptyProject\\EmptyProject.csproj",
       "libraryId": "System.Threading.Tasks.Extensions",

@@ -147,13 +147,19 @@
     {
       "code": "NU1301",
       "level": "Error",
-      "message": "The local source 'D:\\Projects\\nuget' doesn't exist.",
+      "message": "本機來源 'D:\\Projects\\nuget' 不存在。",
+      "libraryId": "Microsoft.Bcl.HashCode"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "本機來源 'D:\\Projects\\nuget' 不存在。",
       "libraryId": "CsvHelper"
     },
     {
       "code": "NU1301",
       "level": "Error",
-      "message": "The local source 'D:\\Projects\\nuget' doesn't exist.",
+      "message": "本機來源 'D:\\Projects\\nuget' 不存在。",
       "libraryId": "System.Threading.Tasks.Extensions"
     }
   ]
