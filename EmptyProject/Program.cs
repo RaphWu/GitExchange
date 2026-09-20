@@ -19,4 +19,17 @@ namespace EmptyProject
             Application.Run(new Form1());
         }
     }
+
+
+    public static class Bootstrapper
+    {
+        private static readonly IUnityContainer _container = new UnityContainer();
+        public static void RegisterDependencies()
+        {
+            WebApiConfig.RegisterTypes(_container);
+            DalConfig.RegisterTypes(_container);
+            BllConfig.RegisterTypes(_container);
+        }
+    }
+
 }
