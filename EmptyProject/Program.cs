@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EmptyProject
@@ -19,17 +16,4 @@ namespace EmptyProject
             Application.Run(new Form1());
         }
     }
-
-
-    public static class Bootstrapper
-    {
-        private static readonly IUnityContainer _container = new UnityContainer();
-        public static void RegisterDependencies()
-        {
-            WebApiConfig.RegisterTypes(_container);
-            DalConfig.RegisterTypes(_container);
-            BllConfig.RegisterTypes(_container);
-        }
-    }
-
 }
