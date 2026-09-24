@@ -32,7 +32,7 @@ namespace EmptyProject
                 sb.AppendLine($"Input Length     : {device.GetMaxInputReportLength()}");
                 sb.AppendLine($"Output Length    : {device.GetMaxOutputReportLength()}");
                 sb.AppendLine($"Report Descriptor:");
-                sb.AppendLine($"\t{ReportDescriptorDumper.DumpProperties(device.GetReportDescriptor())}");
+                sb.AppendLine($"{HidReportDumper.DumpProperties(device.GetReportDescriptor())}");
             }
 
             string result = sb.ToString();

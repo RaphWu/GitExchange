@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using HidSharp.Reports;
 
 namespace EmptyProject
 {
     public static class ReportDescriptorDumper
     {
+        /// <summary>
+        /// 通用物件屬性 Dump。
+        /// </summary>
         public static string DumpProperties(object obj)
         {
             var sb = new StringBuilder();
@@ -17,11 +21,60 @@ namespace EmptyProject
                 obj,
                 sb,
                 indent: 0,
-                maxDepth: 100,
+                maxDepth: 50,
                 maxCollectionItems: 100,
                 visited: visited);
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Dump HidSharp ReportDescriptor。
+        /// </summary>
+        public static string DumpReportDescriptor(
+            ReportDescriptor descriptor)
+        {
+            if (descriptor == null)
+            {
+                throw new ArgumentNullException(nameof(descriptor));
+            }
+
+            var sb = new StringBuilder();
+
+            var visited =
+                new HashSet<object>(
+                    ReferenceEqualityComparer.Instance);
+
+            sb.AppendLine("========== HID REPORT DESCRIPTOR ==========");
+            sb.AppendLine();
+
+            DumpObject(
+                descriptor,
+                sb,
+                indent: 0,
+                maxDepth: 20,
+                maxCollectionItems: 100,
+                visited: visited);
+
+            sb.AppendLine();
+            sb.AppendLine("========== END ==========");
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 從 HidDevice 取得並 Dump ReportDescriptor。
+        /// </summary>
+        public static string DumpReportDescriptor(
+            HidSharp.HidDevice device)
+        {
+            if (device == null)
+            {
+                throw new ArgumentNullException(nameof(device));
+            }
+
+            return DumpReportDescriptor(
+                device.GetReportDescriptor());
         }
 
         private static void DumpObject(
@@ -32,29 +85,39 @@ namespace EmptyProject
             int maxCollectionItems,
             HashSet<object> visited)
         {
-            string indentStr = new string('\t', indent);
+            string indentStr =
+                new string('\t', indent);
 
             if (obj == null)
             {
-                sb.AppendLine(indentStr + "null");
+                sb.AppendLine(
+                    indentStr + "null");
+
                 return;
             }
 
             Type type = obj.GetType();
 
-            sb.AppendLine(indentStr + $"Type: {type.FullName}");
+            sb.AppendLine(
+                indentStr + $"Type: {type.FullName}");
 
             // Primitive / simple value
             if (IsSimpleType(type))
             {
-                sb.AppendLine(indentStr + $"\tValue: {FormatValue(obj)}");
+                sb.AppendLine(
+                    indentStr +
+                    $"\tValue: {FormatValue(obj)}");
+
                 return;
             }
 
             // Prevent too deep recursion.
             if (indent >= maxDepth)
             {
-                sb.AppendLine(indentStr + "\t<Max depth reached>");
+                sb.AppendLine(
+                    indentStr +
+                    "\t<Max depth reached>");
+
                 return;
             }
 
@@ -63,7 +126,10 @@ namespace EmptyProject
             {
                 if (!visited.Add(obj))
                 {
-                    sb.AppendLine(indentStr + "\t<CIRCULAR REFERENCE>");
+                    sb.AppendLine(
+                        indentStr +
+                        "\t<CIRCULAR REFERENCE>");
+
                     return;
                 }
             }
@@ -86,8 +152,10 @@ namespace EmptyProject
 
                 // IEnumerable must be handled before normal properties.
                 //
-                // This is important for HidSharp IndexList and similar types.
-                if (obj is IEnumerable enumerable && !(obj is string))
+                // This is important for HidSharp IndexList
+                // and similar collection types.
+                if (obj is IEnumerable enumerable &&
+                    !(obj is string))
                 {
                     DumpEnumerable(
                         enumerable,
@@ -100,9 +168,10 @@ namespace EmptyProject
                     return;
                 }
 
-                PropertyInfo[] properties = type.GetProperties(
-                    BindingFlags.Instance |
-                    BindingFlags.Public);
+                PropertyInfo[] properties =
+                    type.GetProperties(
+                        BindingFlags.Instance |
+                        BindingFlags.Public);
 
                 foreach (PropertyInfo property in properties)
                 {
@@ -134,19 +203,22 @@ namespace EmptyProject
             int maxCollectionItems,
             HashSet<object> visited)
         {
-            string indentStr = new string('\t', indent);
+            string indentStr =
+                new string('\t', indent);
 
             // Ignore indexed properties.
             //
             // Example:
             // Item[int index]
             //
-            // They require an argument and cannot be read by GetValue(obj, null).
+            // They require an argument and cannot be
+            // read by GetValue(obj, null).
             if (property.GetIndexParameters().Length > 0)
             {
                 sb.AppendLine(
                     indentStr +
-                    $"\t{property.Name} ({property.PropertyType.Name}) = " +
+                    $"\t{property.Name} " +
+                    $"({property.PropertyType.Name}) = " +
                     "<INDEXED PROPERTY>");
 
                 return;
@@ -156,16 +228,22 @@ namespace EmptyProject
 
             try
             {
-                value = property.GetValue(obj, null);
+                value =
+                    property.GetValue(
+                        obj,
+                        null);
             }
             catch (TargetInvocationException ex)
             {
-                Exception inner = ex.InnerException;
+                Exception inner =
+                    ex.InnerException;
 
                 sb.AppendLine(
                     indentStr +
-                    $"\t{property.Name} ({property.PropertyType.Name}) = " +
-                    $"<THROWN: {inner?.GetType().FullName ?? ex.GetType().FullName}: " +
+                    $"\t{property.Name} " +
+                    $"({property.PropertyType.Name}) = " +
+                    $"<THROWN: " +
+                    $"{inner?.GetType().FullName ?? ex.GetType().FullName}: " +
                     $"{inner?.Message ?? ex.Message}>");
 
                 return;
@@ -174,8 +252,11 @@ namespace EmptyProject
             {
                 sb.AppendLine(
                     indentStr +
-                    $"\t{property.Name} ({property.PropertyType.Name}) = " +
-                    $"<ERROR: {ex.GetType().FullName}: {ex.Message}>");
+                    $"\t{property.Name} " +
+                    $"({property.PropertyType.Name}) = " +
+                    $"<ERROR: " +
+                    $"{ex.GetType().FullName}: " +
+                    $"{ex.Message}>");
 
                 return;
             }
@@ -184,19 +265,22 @@ namespace EmptyProject
             {
                 sb.AppendLine(
                     indentStr +
-                    $"\t{property.Name} ({property.PropertyType.Name}) = null");
+                    $"\t{property.Name} " +
+                    $"({property.PropertyType.Name}) = null");
 
                 return;
             }
 
-            Type valueType = value.GetType();
+            Type valueType =
+                value.GetType();
 
             // Simple value.
             if (IsSimpleType(valueType))
             {
                 sb.AppendLine(
                     indentStr +
-                    $"\t{property.Name} ({property.PropertyType.Name}) = " +
+                    $"\t{property.Name} " +
+                    $"({property.PropertyType.Name}) = " +
                     $"{FormatValue(value)}");
 
                 return;
@@ -207,7 +291,8 @@ namespace EmptyProject
             {
                 sb.AppendLine(
                     indentStr +
-                    $"\t{property.Name} ({property.PropertyType.Name}) =");
+                    $"\t{property.Name} " +
+                    $"({property.PropertyType.Name}) =");
 
                 DumpDictionary(
                     dictionary,
@@ -228,11 +313,13 @@ namespace EmptyProject
             // - Collection<T>
             // - HidSharp IndexList
             // - etc.
-            if (value is IEnumerable enumerable && !(value is string))
+            if (value is IEnumerable enumerable &&
+                !(value is string))
             {
                 sb.AppendLine(
                     indentStr +
-                    $"\t{property.Name} ({property.PropertyType.Name}) =");
+                    $"\t{property.Name} " +
+                    $"({property.PropertyType.Name}) =");
 
                 DumpEnumerable(
                     enumerable,
@@ -248,7 +335,8 @@ namespace EmptyProject
             // Complex object.
             sb.AppendLine(
                 indentStr +
-                $"\t{property.Name} ({property.PropertyType.Name}) =");
+                $"\t{property.Name} " +
+                $"({property.PropertyType.Name}) =");
 
             DumpObject(
                 value,
@@ -267,7 +355,8 @@ namespace EmptyProject
             int maxCollectionItems,
             HashSet<object> visited)
         {
-            string indentStr = new string('\t', indent);
+            string indentStr =
+                new string('\t', indent);
 
             int count = 0;
 
@@ -285,7 +374,8 @@ namespace EmptyProject
                     "Count = <unknown>");
             }
 
-            sb.AppendLine(indentStr + "[");
+            sb.AppendLine(
+                indentStr + "[");
 
             foreach (object item in enumerable)
             {
@@ -293,7 +383,8 @@ namespace EmptyProject
                 {
                     sb.AppendLine(
                         indentStr +
-                        $"\t... <maximum {maxCollectionItems} items reached>");
+                        $"\t... <maximum " +
+                        $"{maxCollectionItems} items reached>");
 
                     break;
                 }
@@ -308,7 +399,8 @@ namespace EmptyProject
                 }
                 else if (IsSimpleType(item.GetType()))
                 {
-                    sb.AppendLine(FormatValue(item));
+                    sb.AppendLine(
+                        FormatValue(item));
                 }
                 else
                 {
@@ -326,11 +418,14 @@ namespace EmptyProject
                 count++;
             }
 
-            sb.AppendLine(indentStr + "]");
+            sb.AppendLine(
+                indentStr + "]");
 
             if (count == 0)
             {
-                sb.AppendLine(indentStr + "\t<empty>");
+                sb.AppendLine(
+                    indentStr +
+                    "\t<empty>");
             }
         }
 
@@ -342,13 +437,15 @@ namespace EmptyProject
             int maxCollectionItems,
             HashSet<object> visited)
         {
-            string indentStr = new string('\t', indent);
+            string indentStr =
+                new string('\t', indent);
 
             sb.AppendLine(
                 indentStr +
                 $"Count = {dictionary.Count}");
 
-            sb.AppendLine(indentStr + "{");
+            sb.AppendLine(
+                indentStr + "{");
 
             int count = 0;
 
@@ -358,7 +455,8 @@ namespace EmptyProject
                 {
                     sb.AppendLine(
                         indentStr +
-                        $"\t... <maximum {maxCollectionItems} items reached>");
+                        $"\t... <maximum " +
+                        $"{maxCollectionItems} items reached>");
 
                     break;
                 }
@@ -373,7 +471,8 @@ namespace EmptyProject
                 }
                 else if (IsSimpleType(entry.Value.GetType()))
                 {
-                    sb.AppendLine(FormatValue(entry.Value));
+                    sb.AppendLine(
+                        FormatValue(entry.Value));
                 }
                 else
                 {
@@ -391,10 +490,12 @@ namespace EmptyProject
                 count++;
             }
 
-            sb.AppendLine(indentStr + "}");
+            sb.AppendLine(
+                indentStr + "}");
         }
 
-        private static bool IsSimpleType(Type type)
+        private static bool IsSimpleType(
+            Type type)
         {
             if (type == null)
             {
@@ -421,28 +522,34 @@ namespace EmptyProject
                 return true;
             }
 
-            Type nullableType = Nullable.GetUnderlyingType(type);
+            Type nullableType =
+                Nullable.GetUnderlyingType(type);
 
             if (nullableType != null)
             {
-                return IsSimpleType(nullableType);
+                return IsSimpleType(
+                    nullableType);
             }
 
             return false;
         }
 
-        private static string FormatValue(object value)
+        private static string FormatValue(
+            object value)
         {
             if (value == null)
             {
                 return "null";
             }
 
-            Type type = value.GetType();
+            Type type =
+                value.GetType();
 
             if (type.IsEnum)
             {
-                return $"{value} ({Convert.ToInt64(value)})";
+                return
+                    $"{value} " +
+                    $"({Convert.ToInt64(value)})";
             }
 
             if (value is string)
@@ -459,79 +566,103 @@ namespace EmptyProject
             {
                 byte b = (byte)value;
 
-                return $"{b} (0x{b:X2})";
+                return
+                    $"{b} " +
+                    $"(0x{b:X2})";
             }
 
             if (value is sbyte)
             {
                 sbyte b = (sbyte)value;
 
-                return $"{b} (0x{b:X2})";
+                return
+                    $"{b} " +
+                    $"(0x{b:X2})";
             }
 
             if (value is ushort)
             {
                 ushort v = (ushort)value;
 
-                return $"{v} (0x{v:X4})";
+                return
+                    $"{v} " +
+                    $"(0x{v:X4})";
             }
 
             if (value is short)
             {
                 short v = (short)value;
 
-                return $"{v} (0x{v:X4})";
+                return
+                    $"{v} " +
+                    $"(0x{v:X4})";
             }
 
             if (value is uint)
             {
                 uint v = (uint)value;
 
-                return $"{v} (0x{v:X8})";
+                return
+                    $"{v} " +
+                    $"(0x{v:X8})";
             }
 
             if (value is int)
             {
                 int v = (int)value;
 
-                return $"{v} (0x{v:X8})";
+                return
+                    $"{v} " +
+                    $"(0x{v:X8})";
             }
 
             if (value is ulong)
             {
                 ulong v = (ulong)value;
 
-                return $"{v} (0x{v:X16})";
+                return
+                    $"{v} " +
+                    $"(0x{v:X16})";
             }
 
             if (value is long)
             {
                 long v = (long)value;
 
-                return $"{v} (0x{v:X16})";
+                return
+                    $"{v} " +
+                    $"(0x{v:X16})";
             }
 
             return value.ToString();
         }
 
-        private class ReferenceEqualityComparer : IEqualityComparer<object>
+        private class ReferenceEqualityComparer :
+            IEqualityComparer<object>
         {
-            public static readonly ReferenceEqualityComparer Instance =
-                new ReferenceEqualityComparer();
+            public static readonly
+                ReferenceEqualityComparer Instance =
+                    new ReferenceEqualityComparer();
 
-            public new bool Equals(object x, object y)
+            public new bool Equals(
+                object x,
+                object y)
             {
                 return ReferenceEquals(x, y);
             }
 
-            public int GetHashCode(object obj)
+            public int GetHashCode(
+                object obj)
             {
                 if (obj == null)
                 {
                     return 0;
                 }
 
-                return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(obj);
+                return
+                    System.Runtime.CompilerServices
+                        .RuntimeHelpers
+                        .GetHashCode(obj);
             }
         }
     }
