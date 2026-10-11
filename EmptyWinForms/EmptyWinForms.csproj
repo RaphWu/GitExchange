@@ -8,4 +8,13 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Autofac" />
+	  <PackageReference Include="Calin" />
+	  <PackageReference Include="Microsoft.Extensions.Logging" />
+	  <PackageReference Include="Serilog" />
+	  <PackageReference Include="Serilog.Extensions.Logging" />
+	  <PackageReference Include="Serilog.Sinks.File" />
+	</ItemGroup>
+
 </Project>

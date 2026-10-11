@@ -1,7 +1,47 @@
-| 測試                                                   | 問題                                                      | 修正方式                                   |
-| ------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------ |
-| Fit_SineWave_ShouldCaptureFirstHarmonic                | interval = 2π/n 讓最後一點不落在 2π，正規化後頻率錯配     | 改 interval = 2π/(n-1)，x 覆蓋完整 [0, 2π] |
-| Fit_WithHigherHarmonics_ShouldFitComplexWave           | 同上                                                      | 同上                                       |
-| Fit_IncreasesSmoothPoints_ShouldIncreaseResolution     | xs2[last] > xs1[last] 兩者都等於 xMax=4，邏輯永遠為 false | 改為檢查步距縮小                           |
-| Fit_PeriodicDegreeSamples_ShouldReproduceOriginalWave  | y 用 i\*π/180 但正規化周期是 359 不是 360，1e-6 必定失敗  | 改用正規化角度 i/(n-1)\*2π 生成 y          |
-| Fit_PeriodicDegreeSamples_ShouldKeepEndpointContinuous | 修正 FourierFit.cs 後自動通過                             | 無需修改                                   |
+# Padding設計規範
+
+| 規範項目      | 說明                                                                                                               |
+| ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 命名          | 使用明確位元寬度的名稱，例如 `PaddedInt32`，避免 `PaddedInt` 在跨平台或 API 文件中產生語意模糊。                   |
+| 結構配置      | 結構體大小固定為 128 bytes，並將主要欄位配置在偏移量 `0`。<br/>只保證結構體大小，不保證起始位址以 128 bytes 對齊。 |
+| 執行緒安全    | Padding 不提供原子性、記憶體可見性或同步保證。<br/>需要原子操作時，仍須使用適當的 Interlocked API。                |
+| 效能驗證      | 128 bytes 是保守的配置策略，不保證實際 Cache Line 隔離，也不代表一定比 64 bytes 更快。                             |
+| False Sharing | 不保證所有硬體都能藉此完全消除 False Sharing。                                                                     |
+| 記憶體成本    | 只對需要隔離的欄位使用 Padding。                                                                                   |
+
+## Padded 型別完整需求清單
+
+針對你的基礎 NuGet，供其他 NuGet、類別庫及 APP 共用，建議依資料型別、實際用途與必要性規劃以下集合。
+
+### 整數與指標型別
+
+| 型別            | C# 欄位型別 | 優先級 | 主要用途                           |
+| --------------- | ----------- | ------ | ---------------------------------- |
+| `PaddedInt32`   | `int`       | 必要   | RingBuffer 索引、計數器、狀態值    |
+| `PaddedInt64`   | `long`      | 必要   | 長期累計值、序號、長整數計數器     |
+| `PaddedUInt32`  | `uint`      | 建議   | 無號計數器、位元欄位               |
+| `PaddedUInt64`  | `ulong`     | 建議   | 無號長整數計數器                   |
+| `PaddedIntPtr`  | `IntPtr`    | 視需求 | 平台原生整數、原生指標相關數值     |
+| `PaddedUIntPtr` | `UIntPtr`   | 視需求 | 平台原生無號整數、原生大小相關數值 |
+
+### 其他數值與基本型別
+
+| 型別            | C# 欄位型別 | 優先級         | 主要用途         |
+| --------------- | ----------- | -------------- | ---------------- |
+| `PaddedByte`    | `byte`      | 不建議預先建立 | 單位元組資料     |
+| `PaddedSByte`   | `sbyte`     | 不建議預先建立 | 有號單位元組資料 |
+| `PaddedInt16`   | `short`     | 不建議預先建立 | 16 位元有號整數  |
+| `PaddedUInt16`  | `ushort`    | 不建議預先建立 | 16 位元無號整數  |
+| `PaddedSingle`  | `float`     | 視需求         | 單精度浮點數     |
+| `PaddedDouble`  | `double`    | 視需求         | 雙精度浮點數     |
+| `PaddedDecimal` | `decimal`   | 不建議預先建立 | 高精度十進位數值 |
+| `PaddedBoolean` | `bool`      | 不建議預先建立 | 布林旗標         |
+| `PaddedChar`    | `char`      | 不建議預先建立 | 字元資料         |
+
+### 參考型別
+
+| 型別              | 欄位型別                | 優先級 | 主要用途                         |
+| ----------------- | ----------------------- | ------ | -------------------------------- |
+| `PaddedReference` | `object` 或泛型參考型別 | 視需求 | 隔離不同執行緒頻繁更新的物件參考 |
+
+`PaddedReference` 不應直接沿用數值型別的實作。若要支援泛型參考型別，必須另外確認結構配置、參考欄位位置與執行期限制。

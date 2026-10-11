@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace EmptyWinForms
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         // ---------------------------------------------------------
         // 1. Win32 API 與 結構宣告
@@ -24,7 +24,7 @@ namespace EmptyWinForms
         // 標記當前是否正在按下該目標鍵盤的按鍵
         private static bool _isTargetKeyboardActive = false;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             SetupTestControls();
