@@ -28,81 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.input1 = new AntdUI.Input();
+            this.pageHeader1 = new AntdUI.PageHeader();
             this.SuspendLayout();
             // 
-            // textBox1
+            // input1
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(425, 23);
-            this.textBox1.TabIndex = 0;
+            this.input1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.input1.Location = new System.Drawing.Point(52, 105);
+            this.input1.Multiline = true;
+            this.input1.Name = "input1";
+            this.input1.Size = new System.Drawing.Size(315, 168);
+            this.input1.TabIndex = 0;
             // 
-            // label1
+            // pageHeader1
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(425, 77);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(15, 9);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(425, 106);
-            this.splitContainer1.SplitterDistance = 25;
-            this.splitContainer1.TabIndex = 2;
+            this.pageHeader1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pageHeader1.Location = new System.Drawing.Point(15, 9);
+            this.pageHeader1.Name = "pageHeader1";
+            this.pageHeader1.ShowButton = true;
+            this.pageHeader1.Size = new System.Drawing.Size(393, 34);
+            this.pageHeader1.TabIndex = 1;
+            this.pageHeader1.Text = "pageHeader1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 124);
-            this.Controls.Add(this.splitContainer1);
+            this.ClientSize = new System.Drawing.Size(423, 299);
+            this.Controls.Add(this.pageHeader1);
+            this.Controls.Add(this.input1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(15, 9, 15, 9);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private AntdUI.Input input1;
+        private AntdUI.PageHeader pageHeader1;
     }
 }
