@@ -1,0 +1,90 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram id="DIGMNw85MDx3GAszmwgh" name="第1頁">
+    <mxGraphModel dx="1678" dy="1060" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-3" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="p1tHE9SDR6Sb-i5Zquso-21" target="p1tHE9SDR6Sb-i5Zquso-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="180.0000000000001" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-5" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="p1tHE9SDR6Sb-i5Zquso-2" target="p1tHE9SDR6Sb-i5Zquso-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-6" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;否&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="p1tHE9SDR6Sb-i5Zquso-5">
+          <mxGeometry x="-0.312" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-19" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="p1tHE9SDR6Sb-i5Zquso-2" target="p1tHE9SDR6Sb-i5Zquso-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-20" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;是&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="p1tHE9SDR6Sb-i5Zquso-19">
+          <mxGeometry x="-0.4364" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-2" value="&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;font-size: 14pt; font-family: 標楷體;&quot;&gt;軟體正常&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;font-size: 14pt; font-family: 標楷體;&quot;&gt;讀取數據？&lt;/span&gt;&lt;/p&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="175" y="210" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-8" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="p1tHE9SDR6Sb-i5Zquso-4" target="p1tHE9SDR6Sb-i5Zquso-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-4" value="&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;font-size: 14pt; font-family: 標楷體;&quot;&gt;進入&lt;/span&gt;&lt;span style=&quot;font-size: 14pt; font-family: 標楷體;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(255, 0, 0), rgb(255, 167, 167));&quot;&gt;裝置設定&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 14pt; font-family: 標楷體;&quot;&gt;頁面&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 14pt; font-family: 標楷體;&quot;&gt;執行&lt;/span&gt;&lt;span style=&quot;background-color: transparent; font-size: 14pt; font-family: 標楷體;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(255, 0, 0), rgb(255, 167, 167));&quot;&gt;連線確認&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;font-family: 標楷體; font-size: 18.6667px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;測試&lt;/span&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="175" y="350" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-12" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="p1tHE9SDR6Sb-i5Zquso-7" target="p1tHE9SDR6Sb-i5Zquso-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-13" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;有&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="p1tHE9SDR6Sb-i5Zquso-12">
+          <mxGeometry x="-0.4874" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-23" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="p1tHE9SDR6Sb-i5Zquso-7" target="p1tHE9SDR6Sb-i5Zquso-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-24" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;否&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="p1tHE9SDR6Sb-i5Zquso-23">
+          <mxGeometry x="-0.3833" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-7" value="&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;font face=&quot;標楷體&quot;&gt;&lt;span style=&quot;font-size: 18.6667px;&quot;&gt;回應訊息&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;font face=&quot;標楷體&quot;&gt;&lt;span style=&quot;font-size: 18.6667px;&quot;&gt;有&lt;/span&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 18.6667px; font-family: 標楷體; background-color: transparent; color: light-dark(rgb(255, 0, 0), rgb(237, 237, 237));&quot;&gt;裝置類別&lt;/font&gt;&lt;span style=&quot;font-size: 18.6667px; font-family: 標楷體; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;和&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;font face=&quot;標楷體&quot;&gt;&lt;span style=&quot;font-size: 18.6667px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(255, 0, 0), rgb(237, 237, 237));&quot;&gt;序號&lt;/font&gt;？&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="175" y="440" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="p1tHE9SDR6Sb-i5Zquso-9" target="p1tHE9SDR6Sb-i5Zquso-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="345" y="150.0000000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-9" value="&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-family: 標楷體; font-size: 18.6667px;&quot;&gt;將高度計變更&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-family: 標楷體; font-size: 18.6667px;&quot;&gt;為SPC模式&lt;/span&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="400" y="225" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-15" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="p1tHE9SDR6Sb-i5Zquso-10" target="p1tHE9SDR6Sb-i5Zquso-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-16" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;否&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="p1tHE9SDR6Sb-i5Zquso-15">
+          <mxGeometry x="-0.8258" relative="1" as="geometry">
+            <mxPoint y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-10" value="&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;font face=&quot;標楷體&quot;&gt;&lt;span style=&quot;font-size: 18.6667px;&quot;&gt;高度計&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;font face=&quot;標楷體&quot;&gt;&lt;span style=&quot;font-size: 18.6667px;&quot;&gt;是否在&lt;font style=&quot;color: light-dark(rgb(255, 0, 0), rgb(237, 237, 237));&quot;&gt;SPC&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;font face=&quot;標楷體&quot;&gt;&lt;span style=&quot;font-size: 18.6667px;&quot;&gt;模式?&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="440" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-18" value="結束" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="230" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-21" value="&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;font-size: 14pt; font-family: 標楷體;&quot;&gt;執行一次&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;font-size: 14pt; font-family: 標楷體;&quot;&gt;高度量測&lt;/span&gt;&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="200" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-22" value="&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;font face=&quot;標楷體&quot;&gt;&lt;span style=&quot;font-size: 18.6667px;&quot;&gt;COM埠&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;font face=&quot;標楷體&quot;&gt;&lt;span style=&quot;font-size: 18.6667px;&quot;&gt;是否正確？&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="175" y="570" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p1tHE9SDR6Sb-i5Zquso-25" value="&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-family: 標楷體; font-size: 18.6667px;&quot;&gt;將高度計變更&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; direction: ltr; unicode-bidi: embed; word-break: normal;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-family: 標楷體; font-size: 18.6667px;&quot;&gt;為SPC模式&lt;/span&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="400" y="585" width="170" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
