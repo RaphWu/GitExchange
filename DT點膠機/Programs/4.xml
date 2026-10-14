@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTRobot>
+  <ProgramParameterInfo ProgramNumber="4" ProgramName="" XYMoveSpeed="350" ZMoveSpeed="120" DeBugSpeed="10" DisSpeedMode="Fixed" LineSpeed="10" DisSpeed="10" BackHome="false" FirstTimeRunModeToSoftware="false" SoftX="0" SoftY="0" SoftZ="0" SoftU="0" SoftV="0" SoftW="0" AdjustX="0" AdjustY="0" AdjustZ="0" AdjustU="0" AdjustV="0" AdjustW="0" AutoPurgeTime="0" AutoPurgeWaitTime="0" TempCommand2="0" TempX1="0" TempY1="0" TempZ1="0" TempU1="0" TempV1="0" TempW1="0" TempCommand1="0" TempX2="0" TempY2="0" TempZ2="0" TempU2="0" TempV2="0" TempW2="0" ZLimit="100" EMG="false" Quickstep="false" QuickstepType="Normal" DefaultLIO="0" Password="" Lock="false" Beep="true" DisplayRunCount="true" DefineRunCount="0" RunCount="0" PausePosition="Stand" RunnProgramNumbers="4" TipFinderModule="0" TipFinderType="1" TipFinderLoop="2" TipFinderAction="2" TipFinderCenterX="0" TipFinderCenterY="0" TipFinderCenterZ="0" TipFinderCenterU="0" TipFinderCenterV="0" TipFinderCenterW="0" TipFinderStandardX="0" TipFinderStandardY="0" TipFinderStandardZ="0" TipFinderStandardU="0" TipFinderStandardV="0" TipFinderStandardW="0" AOIInRunMode="Once" AOIOnceShowError="true" AOIOnceNoShowErrorAction="-1" AOIContinuousErrorStop="true" AOIContinuousSaveErrorLog="false" CCDX="0" CCDY="0" CCDZ="0" CCDU="0" CCDV="0" CCDW="0" CCDTipX="0" CCDTipY="0" CCDTipZ="0" CCDTipU="0" CCDTipV="0" CCDTipW="0" CCDTipAdjustZStatus="true" CCDTipAdjustZ="0" Barcode="" TipStandardX1="0" TipStandardY1="0" TipStandardZ1="0" TipStandardU1="0" TipStandardV1="0" TipStandardW1="0" TipStandardX2="0" TipStandardY2="0" TipStandardZ2="0" TipStandardU2="0" TipStandardV2="0" TipStandardW2="0" TipStandardX3="0" TipStandardY3="0" TipStandardZ3="0" TipStandardU3="0" TipStandardV3="0" TipStandardW3="0" TipStandardX4="0" TipStandardY4="0" TipStandardZ4="0" TipStandardU4="0" TipStandardV4="0" TipStandardW4="0" TipStandardX5="0" TipStandardY5="0" TipStandardZ5="0" TipStandardU5="0" TipStandardV5="0" TipStandardW5="0" TipStandardX6="0" TipStandardY6="0" TipStandardZ6="0" TipStandardU6="0" TipStandardV6="0" TipStandardW6="0" TipFinderCenterX1="0" TipFinderCenterY1="0" TipFinderCenterZ1="0" TipFinderCenterU1="0" TipFinderCenterV1="0" TipFinderCenterW1="0" TipFinderCenterX2="0" TipFinderCenterY2="0" TipFinderCenterZ2="0" TipFinderCenterU2="0" TipFinderCenterV2="0" TipFinderCenterW2="0" TipFinderCenterX3="0" TipFinderCenterY3="0" TipFinderCenterZ3="0" TipFinderCenterU3="0" TipFinderCenterV3="0" TipFinderCenterW3="0" TipFinderCenterX4="0" TipFinderCenterY4="0" TipFinderCenterZ4="0" TipFinderCenterU4="0" TipFinderCenterV4="0" TipFinderCenterW4="0" TipFinderCenterX5="0" TipFinderCenterY5="0" TipFinderCenterZ5="0" TipFinderCenterU5="0" TipFinderCenterV5="0" TipFinderCenterW5="0" TipFinderCenterX6="0" TipFinderCenterY6="0" TipFinderCenterZ6="0" TipFinderCenterU6="0" TipFinderCenterV6="0" TipFinderCenterW6="0" UseZTouchTipFinder="0" ZTouchTipFinderFastSpeed="5" ZTouchTipFinderDistance="30" ZTouchTipFinderCenterX="0" ZTouchTipFinderCenterY="0" ZTouchTipFinderCenterZ="0" ZTouchTipFinderCenterU="0" ZTouchTipFinderCenterV="0" ZTouchTipFinderCenterW="0" ZTouchTipFinderStandard="0" />
+  <CommandInfo Index="1" Function="Z_Clearance" Values="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="2" Function="Point_Dispense_Setup" Values="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="3" Function="Line_Dispense_Setup" Values="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="4" Function="Line_Speed" Values="10,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="5" Function="Dispense_Output_Setup" Values="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="6" Function="Dispense_Dot" Values="111.827003479004,135.25,29.2140007019043,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="7" Function="Set_IO" Values="2,6,1,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="8" Function="Line_Start" Values="111.827003479004,135.25,29.2140007019043,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="9" Function="Line_End" Values="111.827003479004,135.25,32.1450004577637,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="10" Function="Wait_Point" Values="0.300000011920929,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="11" Function="Dummy_Point" Values="111.827003479004,135.25,29.3059997558594,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="12" Function="Set_IO" Values="2,6,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="13" Function="Dispense_Dot" Values="111.827003479004,135.25,29.2140007019043,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="14" Function="Dispense_Output_Setup" Values="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="15" Function="Line_Speed" Values="2,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="16" Function="Dispense_Dot" Values="142.817993164062,111.553001403809,36.0579986572266,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="17" Function="Dispense_Dot" Values="155.119003295898,119.43399810791,36.0629997253418,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="18" Function="Dispense_Dot" Values="155.119003295898,119.537002563477,41.5309982299805,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="19" Function="Line_Start" Values="154.934005737305,119.759002685547,41.7620010375977,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="20" Function="Arc_Point" Values="158.083999633789,119.524002075195,41.7620010375977,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="21" Function="Line_End" Values="160.087997436523,119.714996337891,41.7620010375977,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="22" Function="Dummy_Point" Values="158.408996582031,118.484001159668,41.5620002746582,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="23" Function="Dispense_Dot" Values="158.408996582031,118.484001159668,36.0519981384277,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="24" Function="Wait_Point" Values="0.0500000007450581,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="25" Function="Dispense_Dot" Values="172.552001953125,140.296005249023,36.0250015258789,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="26" Function="Dispense_Dot" Values="172.552001953125,140.296005249023,41.5200004577637,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="27" Function="Line_Start" Values="172.001998901367,140.296005249023,41.7709999084473,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="28" Function="Arc_Point" Values="170.822998046875,142.828994750977,41.7789993286133,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="29" Function="Line_End" Values="169.52099609375,145.037994384766,41.7789993286133,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="30" Function="Dummy_Point" Values="170.791000366211,144.251998901367,41.5589981079102,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="31" Function="Dispense_Dot" Values="170.791000366211,144.251998901367,36.0330009460449,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="32" Function="Wait_Point" Values="0.0500000007450581,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="33" Function="Dispense_Dot" Values="144.988006591797,145.121994018555,36.0349998474121,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="34" Function="Dispense_Dot" Values="145.29899597168,144.733001708984,41.556999206543,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="35" Function="Line_Start" Values="145.964004516602,145.29899597168,41.7789993286133,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="36" Function="Arc_Point" Values="144.132995605469,142.647003173828,41.7789993286133,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="37" Function="Line_End" Values="143.024993896484,140.199005126953,41.7750015258789,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="38" Function="Dummy_Point" Values="143.585998535156,142.694000244141,41.5750007629395,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="39" Function="Dispense_Dot" Values="143.585998535156,142.694000244141,29.257999420166,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="40" Function="Step_Repeat" Values="0,1,2,2,50,50,1,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="41" Function="End_Program" Values="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+  <CommandInfo Index="43" Function="Dispense_Dot" Values="265.941986083984,79.5630035400391,40.8660011291504,0,0,0,0,0,0,0,0,0,0,0,0" TempValues="" />
+</DTRobot>
