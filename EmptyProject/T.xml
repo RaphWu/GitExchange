@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Entity xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="04f16101-0256-4228-b7a8-08d95590738f" Name="测试名称" DisplayName="备注">
+	<Status StatusId="ca119874-1788-479f-b79b-08d95590738z">成功</Status>
+	<Tags>标签A</Tags>
+	<Tags>标签B</Tags>
+	<Tags>标签C</Tags>
+	<Attributes>
+		<Attribute Status="1" Type="type">
+			<Id>ca119874-1788-479f-b79b-08d95590738f</Id>
+			<Name>张三</Name>
+		</Attribute>
+		<Attribute Status="2" Type="type">
+			<Id>ca119874-1788-479f-b79b-08d955907382</Id>
+			<Name>李四</Name>
+		</Attribute>
+	</Attributes>
+</Entity>

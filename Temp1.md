@@ -1,47 +1,109 @@
-# Padding設計規範
+| 狀態    | 說明                           |
+| ------- | ------------------------------ |
+| Closed  | 控制卡未開啟                   |
+| Opened  | 控制卡已開啟，伺服關閉         |
+| ServoOn | 所有軸伺服開啟，可接受運動命令 |
+| Error   | 控制卡或軸發生嚴重錯誤         |
 
-| 規範項目      | 說明                                                                                                               |
-| ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| 命名          | 使用明確位元寬度的名稱，例如 `PaddedInt32`，避免 `PaddedInt` 在跨平台或 API 文件中產生語意模糊。                   |
-| 結構配置      | 結構體大小固定為 128 bytes，並將主要欄位配置在偏移量 `0`。<br/>只保證結構體大小，不保證起始位址以 128 bytes 對齊。 |
-| 執行緒安全    | Padding 不提供原子性、記憶體可見性或同步保證。<br/>需要原子操作時，仍須使用適當的 Interlocked API。                |
-| 效能驗證      | 128 bytes 是保守的配置策略，不保證實際 Cache Line 隔離，也不代表一定比 64 bytes 更快。                             |
-| False Sharing | 不保證所有硬體都能藉此完全消除 False Sharing。                                                                     |
-| 記憶體成本    | 只對需要隔離的欄位使用 Padding。                                                                                   |
+| 觸發器 (Trigger)   | 對應方法                      |
+| ------------------ | ----------------------------- |
+| BoardOpen          | BoardOpen()                   |
+| BoardClose         | BoardClose()                  |
+| ServoOn / ServoOff | ServoOn() / ServoOff()        |
+| Fault              | 輪詢偵測到錯誤或 API 回傳失敗 |
+| Reset              | ResetAxisState() 或重新開啟   |
 
-## Padded 型別完整需求清單
+```mermaid
+stateDiagram-v2
+    state "已關閉 (Closed)" as Closed
+    state "已開啟 (Opened)" as Opened
+    state "伺服開啟 (ServoOn)" as ServoOn
+    state "錯誤 (Error)" as Error
 
-針對你的基礎 NuGet，供其他 NuGet、類別庫及 APP 共用，建議依資料型別、實際用途與必要性規劃以下集合。
+    [*] --> Closed
+    Closed --> Opened : BoardOpen
+    Opened --> Closed : BoardClose
+    Opened --> ServoOn : ServoOn
+    ServoOn --> Opened : ServoOff
+    Opened --> Error : Fault
+    ServoOn --> Error : Fault
+    Error --> Closed : BoardClose
+    Error --> Opened : Reset
+```
 
-### 整數與指標型別
+| 狀態      | 對應硬體旗標                                               |
+| --------- | ---------------------------------------------------------- |
+| Disabled  | STA_AX_DISABLE                                             |
+| Ready     | STA_AX_READY                                               |
+| Moving    | STA_AX_PTP_MOTION、STA_AX_CONTI_MOTION、STA_AX_SYNC_MOTION |
+| Homing    | STA_AX_HOMING                                              |
+| Jog / Mpg | STA_AX_EXT_JOG、STA_AX_EXT_MPG                             |
+| Stopping  | STA_AX_STOPPING                                            |
+| Paused    | STA_AX_PAUSE                                               |
+| ErrorStop | STA_AX_ERROR_STOP                                          |
 
-| 型別            | C# 欄位型別 | 優先級 | 主要用途                           |
-| --------------- | ----------- | ------ | ---------------------------------- |
-| `PaddedInt32`   | `int`       | 必要   | RingBuffer 索引、計數器、狀態值    |
-| `PaddedInt64`   | `long`      | 必要   | 長期累計值、序號、長整數計數器     |
-| `PaddedUInt32`  | `uint`      | 建議   | 無號計數器、位元欄位               |
-| `PaddedUInt64`  | `ulong`     | 建議   | 無號長整數計數器                   |
-| `PaddedIntPtr`  | `IntPtr`    | 視需求 | 平台原生整數、原生指標相關數值     |
-| `PaddedUIntPtr` | `UIntPtr`   | 視需求 | 平台原生無號整數、原生大小相關數值 |
+| 觸發器 (Trigger)                   | 對應方法                     |
+| ---------------------------------- | ---------------------------- | --- | -------------------- | -------------------- |
+| ServoOn / ServoOff                 | 伺服開關                     |
+| MoveStart / MoveDone               | 運動開始、完成（由輪詢判定） |     | HomeStart / HomeDone | AxisHome()、輪詢判定 |
+| JogStart / MpgStart / ExtDriveStop | SetExtDrive(axis, 1/2/0)     |
+| Stop                               | AxisStop()                   |     | EmgStop              | AxisStopEmg()        |
+| Pause / Resume                     | 暫停、恢復                   |
+| Fault                              | 輪詢偵測到 STA_AX_ERROR_STOP |
+| ResetError                         | ResetAxisState()             |
 
-### 其他數值與基本型別
+```mermaid
+stateDiagram-v2
+    state "已關閉 (Closed)" as Closed
+    state "已開啟、伺服關閉 (Initialized)" as Initialized
+    state "伺服開啟、待原點復歸 (NotHomed)" as NotHomed
+    state "就緒 (Ready)" as Ready
+    state "原點復歸中 (Homing)" as Homing
+    state "運動中 (Moving)" as Moving
+    state "JOG/MPG 模式 (Jog)" as Jog
+    state "減速停止中 (Stopping)" as Stopping
+    state "暫停 (Paused)" as Paused
+    state "錯誤停止 (ErrorStop)" as ErrorStop
+    state "緊急停止 (EmgStop)" as EmgStop
 
-| 型別            | C# 欄位型別 | 優先級         | 主要用途         |
-| --------------- | ----------- | -------------- | ---------------- |
-| `PaddedByte`    | `byte`      | 不建議預先建立 | 單位元組資料     |
-| `PaddedSByte`   | `sbyte`     | 不建議預先建立 | 有號單位元組資料 |
-| `PaddedInt16`   | `short`     | 不建議預先建立 | 16 位元有號整數  |
-| `PaddedUInt16`  | `ushort`    | 不建議預先建立 | 16 位元無號整數  |
-| `PaddedSingle`  | `float`     | 視需求         | 單精度浮點數     |
-| `PaddedDouble`  | `double`    | 視需求         | 雙精度浮點數     |
-| `PaddedDecimal` | `decimal`   | 不建議預先建立 | 高精度十進位數值 |
-| `PaddedBoolean` | `bool`      | 不建議預先建立 | 布林旗標         |
-| `PaddedChar`    | `char`      | 不建議預先建立 | 字元資料         |
+    [*] --> Closed
+    Closed --> Initialized : AxisOpen
+    Initialized --> Closed : AxisClose
+    Initialized --> NotHomed : ServoOn
+    NotHomed --> Initialized : ServoOff
 
-### 參考型別
+    NotHomed --> Homing : HomeStart
+    Ready --> Homing : HomeStart
+    Homing --> Ready : HomeDone
 
-| 型別              | 欄位型別                | 優先級 | 主要用途                         |
-| ----------------- | ----------------------- | ------ | -------------------------------- |
-| `PaddedReference` | `object` 或泛型參考型別 | 視需求 | 隔離不同執行緒頻繁更新的物件參考 |
+    Ready --> Initialized : ServoOff
+    Ready --> Moving : MoveStart
+    Moving --> Ready : MoveDone
+    Ready --> Jog : JogStart
+    Jog --> Ready : JogStop
 
-`PaddedReference` 不應直接沿用數值型別的實作。若要支援泛型參考型別，必須另外確認結構配置、參考欄位位置與執行期限制。
+    Moving --> Paused : Pause
+    Paused --> Moving : Resume
+
+    Moving --> Stopping : Stop
+    Jog --> Stopping : Stop
+    Stopping --> Ready : StopDone
+
+    Ready --> ErrorStop : Fault
+    Homing --> ErrorStop : Fault
+    Moving --> ErrorStop : Fault
+    Jog --> ErrorStop : Fault
+    Stopping --> ErrorStop : Fault
+    ErrorStop --> Ready : ResetError
+
+    NotHomed --> EmgStop : EmgStop
+    Ready --> EmgStop : EmgStop
+    Homing --> EmgStop : EmgStop
+    Moving --> EmgStop : EmgStop
+    Jog --> EmgStop : EmgStop
+    Paused --> EmgStop : EmgStop
+    Stopping --> EmgStop : EmgStop
+    ErrorStop --> EmgStop : EmgStop
+    EmgStop --> Initialized : ResetEmg
+    EmgStop --> Closed : AxisClose
+```
