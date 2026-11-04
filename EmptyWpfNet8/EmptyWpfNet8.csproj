@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+
+		<!-- 啟用單一執行檔 -->
+		<PublishSingleFile>true</PublishSingleFile>
+
+		<!-- 
+			選擇部署模式：
+			- true (Self-Contained): 目標電腦不需要安裝 .NET 8 執行環境，會將執行環境打包進 EXE（檔案較大，約 60MB~100MB+）。
+			- false (Framework-Dependent): 目標電腦必須先安裝 .NET 8 Desktop Runtime（檔案極小，僅包含你自己的程式碼）。
+		-->
+		<SelfContained>true</SelfContained>
+
+		<!-- 指定目標平台架構（單一檔案必須指定明確的 Runtime Identifier） -->
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+
+		<!-- 【重要 WPF 專案特有設定】讓 WPF 的原生 DLL 與相關資源能夠正確被解壓縮並載入 -->
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+
+		<!-- （選用）將除錯符號檔 (.pdb) 內嵌到執行檔中，避免資料夾出現額外檔案 -->
+		<DebugType>embedded</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.5" />
+	</ItemGroup>
+
+</Project>

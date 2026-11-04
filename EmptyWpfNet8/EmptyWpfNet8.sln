@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36518.9 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net8", "Net8.csproj", "{666DF849-2AEE-478D-805F-6051950AA296}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmptyWpfNet8", "EmptyWpfNet8.csproj", "{D9AA3D04-940B-4D62-B907-B2A50F7028D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{666DF849-2AEE-478D-805F-6051950AA296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{666DF849-2AEE-478D-805F-6051950AA296}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{666DF849-2AEE-478D-805F-6051950AA296}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{666DF849-2AEE-478D-805F-6051950AA296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9AA3D04-940B-4D62-B907-B2A50F7028D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9AA3D04-940B-4D62-B907-B2A50F7028D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9AA3D04-940B-4D62-B907-B2A50F7028D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9AA3D04-940B-4D62-B907-B2A50F7028D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {ACCA84A3-9F62-441A-B358-BF32503CBCD0}
+		SolutionGuid = {8AB8AB12-201F-4418-894C-A09BB883D204}
 	EndGlobalSection
 EndGlobal
