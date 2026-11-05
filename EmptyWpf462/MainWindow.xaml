@@ -1,0 +1,46 @@
+﻿<Window
+    x:Class="EmptyWpf462.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EmptyWpf462"
+    xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vms="clr-namespace:EmptyWpf462"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <vms:ViewModel />
+    </Window.DataContext>
+
+    <lvc:CartesianChart LegendPosition="Right">
+
+        <lvc:CartesianChart.Series>
+            <lvc:SeriesCollection>
+                <lvc:XamlColumnSeries SeriesName="Mary" Values="{Binding MaryValues}" />
+                <lvc:XamlColumnSeries SeriesName="Ana" Values="{Binding AnaValues}" />
+            </lvc:SeriesCollection>
+        </lvc:CartesianChart.Series>
+
+        <!--  We use force to min step to show all the labels always.  -->
+
+        <lvc:CartesianChart.XAxes>
+            <lvc:AxesCollection>
+                <lvc:XamlAxis
+                    ForceStepToMin="True"
+                    Labels="{Binding Labels}"
+                    LabelsRotation="0"
+                    MinStep="1"
+                    SeparatorsAtCenter="False"
+                    SeparatorsPaint="#c8c8c8"
+                    TicksAtCenter="True"
+                    TicksPaint="#232323" />
+            </lvc:AxesCollection>
+        </lvc:CartesianChart.XAxes>
+
+    </lvc:CartesianChart>
+
+</Window>

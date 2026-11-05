@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="AntdUI" />
+	  <PackageReference Include="LiveChartsCore.SkiaSharpView.WinForms" />
 	</ItemGroup>
 
 </Project>
