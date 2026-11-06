@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="LiveChartsCore.SkiaSharpView.WinForms" />
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.WinForms" />
 	</ItemGroup>
 
 </Project>

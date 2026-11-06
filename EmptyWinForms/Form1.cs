@@ -12,8 +12,11 @@ namespace EmptyWinForms
     {
         public Form1()
         {
-            Size = new System.Drawing.Size(50, 50);
+            InitializeComponent();
+        }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
             var maryValues = new double[] { 2, 5, 4 };
             var anaValues = new double[] { 3, 1, 6 };
             var labels = new string[] { "Category 1", "Category 2", "Category 3" };
@@ -39,14 +42,15 @@ namespace EmptyWinForms
             var cartesianChart = new CartesianChart
             {
                 Series = series,
-                XAxes = new ICartesianAxis[] { xAxis },
-                LegendPosition = LiveChartsCore.Measure.LegendPosition.Right,
-                Margin = new Padding(10),
+                XAxes = new Axis[] { xAxis },
+                //LegendPosition = LiveChartsCore.Measure.LegendPosition.Right,
+                //Location = new System.Drawing.Point(0, 0),
                 Dock = DockStyle.Fill,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom
+                //Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom
             };
 
-            Controls.Add(cartesianChart);
+            panel1.Controls.Clear();
+            panel1.Controls.Add(cartesianChart);
         }
     }
 }

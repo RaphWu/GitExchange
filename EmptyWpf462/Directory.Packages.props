@@ -229,9 +229,9 @@
 		<PackageVersion Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
 		<PackageVersion Include="Microsoft.Win32.Registry" Version="5.0.0" />
 
-		<!-- Fody，只要引用第一個套件即可 -->
-		<PackageVersion Include="Costura.Fody" Version="6.2.0"/>
-		<PackageVersion Include="Fody" Version="6.9.3"/>
+		<!-- Fody，只要引用第一個套件即可。需加 PrivateAssets="All" -->
+		<PackageVersion Include="Costura.Fody" Version="6.2.0" />
+		<PackageVersion Include="Fody" Version="6.9.3" />
 
 		<!-- 佳凌科技內部套件 -->
 		<PackageVersion Include="Calin" Version="0.2.6" />

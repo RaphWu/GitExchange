@@ -165,10 +165,12 @@
 		HarfBuzzSharp.NativeAssets.Linux (>= 8.3.1.1)
 		-->
 		<!--
-			以下是 LiveCharts2 WPF 的相依套件，不是 WinForms
-			只要引用第一個套件即可
+			以下是 LiveCharts2 的相依套件。
+			WPF 只要引用 LiveChartsCore.SkiaSharpView.WPF 即可
+			WinForms 只要引用 LiveChartsCore.SkiaSharpView.WinForms 即可
 		-->
 		<PackageVersion Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.5" />
+		<PackageVersion Include="LiveChartsCore.SkiaSharpView.WinForms" Version="2.0.5" />
 		<PackageVersion Include="LiveChartsCore.SkiaSharpView" Version="2.0.5" />
 		<PackageVersion Include="LiveChartsCore" Version="2.0.5" />
 		<PackageVersion Include="SkiaSharp" Version="3.119.0" />
@@ -177,6 +179,7 @@
 		<PackageVersion Include="SkiaSharp.NativeAssets.Win32" Version="3.119.0" />
 		<PackageVersion Include="SkiaSharp.Views.Desktop.Common" Version="3.119.0" />
 		<PackageVersion Include="SkiaSharp.Views.WPF" Version="3.119.0" />
+		<PackageVersion Include="SkiaSharp.Views.WindowsForms" Version="3.119.0" />
 		<PackageVersion Include="HarfBuzzSharp" Version="8.3.1.1" />
 		<PackageVersion Include="HarfBuzzSharp.NativeAssets.macOS" Version="8.3.1.1" />
 		<PackageVersion Include="HarfBuzzSharp.NativeAssets.Win32" Version="8.3.1.1" />
@@ -229,9 +232,9 @@
 		<PackageVersion Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
 		<PackageVersion Include="Microsoft.Win32.Registry" Version="5.0.0" />
 
-		<!-- Fody，只要引用第一個套件即可 -->
-		<PackageVersion Include="Costura.Fody" Version="6.2.0"/>
-		<PackageVersion Include="Fody" Version="6.9.3"/>
+		<!-- Fody，只需引用 Costura.Fody 即可。需加 PrivateAssets="All" -->
+		<PackageVersion Include="Costura.Fody" Version="6.2.0" />
+		<PackageVersion Include="Fody" Version="6.9.3" />
 
 		<!-- 佳凌科技內部套件 -->
 		<PackageVersion Include="Calin" Version="0.2.6" />
