@@ -9,8 +9,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Costura.Fody" PrivateAssets="All" />
-		<PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" />
+	  <PackageReference Include="MahApps.Metro" />
+	  <PackageReference Include="MahApps.Metro.IconPacks.Core" />
+	  <PackageReference Include="MahApps.Metro.IconPacks.Lucide" />
+	  <PackageReference Include="MahApps.Metro.IconPacks.MaterialDesign" />
+	  <PackageReference Include="MahApps.Metro.IconPacks.Modern" />
 	</ItemGroup>
 
 </Project>
